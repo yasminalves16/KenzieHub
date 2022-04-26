@@ -1,11 +1,14 @@
+import Routes from "./Routes"
 
+import GlobalStyle from "./Styles/global"
 
 const App = () => {
-  return (
-    <div className="App">
-      <p>Oi</p>
-    </div>
-  );
+    return (
+        <>
+        <GlobalStyle />
+        <Routes/>
+        </>
+    );
 }
 
 export default App;
