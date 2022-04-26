@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from "styled-components"
 
 
 
 export const Container = styled.button`
 
-    background: ${(props) => (props.whiteSchema ? "#868E96" : "#FF577F" )};
+    background: ${(props) => (props.whiteSchema ? "#868E96" : " #FF577F")};
     color: var(--white);
     height: 45px;
     border-radius: 8px;
@@ -14,7 +14,18 @@ export const Container = styled.button`
     width: 100%;
 
       :hover{
+        background: #FF427F;
         border: 2px solid var(--white);
       }
+
+      ${(props) =>
+        props.whiteSchema &&
+        css`
+            :hover{
+                background: #343B41;
+            }
+            
+        `
+    }
 
 `   

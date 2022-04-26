@@ -6,7 +6,9 @@ const Signup = () => {
     return (
 
       <Container >
-        <p> Signup </p>
+        <form>
+          <input></input>
+        </form>
       </Container>
     );
   }
