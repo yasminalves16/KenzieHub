@@ -71,7 +71,6 @@ const Signup = () => {
                 <h2>Crie sua conta</h2>
                 <p>Rapido e grátis, vamos nessa</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="hidden" name="bio" value="lorem ips"></input>
                     <Input  type="text" label="Nome" placeholder="Digite aqui seu nome" register = {register} name="name" error = {errors.name?.message}></Input>
                     <Input  type="email" label="Email" placeholder="Digite aqui seu email" register = {register} name="email" error = {errors.email?.message} ></Input>
                     <Input  type="password" label="Senha" placeholder="Digite aqui sua senha" register = {register} name="password" error = {errors.password?.message}></Input>

@@ -44,11 +44,19 @@ export const InputContainer = styled.div`
         align-items: center;
         flex: 1;
         border: 0;
+        border: 2px solid transparent;
         padding-left: 15px;
         color: var(--white);
         box-sizing: border-box;
         &::placeholder{
             color: var(--gray)
+        }
+        :active{
+            border: 2px solid var(--white);
+        }
+
+        :hover{
+            border: 2px solid var(--white);
         }
 
         @media (max-width: 800px){

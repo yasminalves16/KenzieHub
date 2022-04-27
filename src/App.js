@@ -5,7 +5,10 @@ import GlobalStyle from "./Styles/global"
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const App = () => {
+
     return (
         <>
             <GlobalStyle />
@@ -20,7 +23,7 @@ const App = () => {
                 draggable
                 pauseOnHover
             />
-            <Routes />
+            <Routes/>
         </>
     );
 }
