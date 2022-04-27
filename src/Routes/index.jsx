@@ -12,7 +12,7 @@ const Routes = () => {
     const [authenticated, setAuthenticated] = useState();
 
     useEffect(() => {
-        const token = JSON.parse(localStorage.getItem("@Doit:token"));
+        const token = JSON.parse(localStorage.getItem("@kenzieHub:token"));
 
         if (token) {
             return setAuthenticated(true);
