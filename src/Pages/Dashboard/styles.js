@@ -6,6 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     align-items: center;
+    margin-left: -20px;
 
     hr{
         color: var(--grey);
@@ -55,9 +56,19 @@ export const Container = styled.div`
                 padding: 20px 20px 40px 20px;
             }
 
+            @media (max-width: 570px){
+                width: 80vw;
+
+                div{
+                    margin: 20px 0px 30px 10px;
+                }
+            }
+
         }
 
 
     }
+
+
 `
 
