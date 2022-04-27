@@ -30,7 +30,7 @@ const Signup = ({authenticated}) => {
             .string()
             .required("Senhas não são iguais")
             .oneOf([yup.ref("password")], "Senhas não são iguais"),
-        course_module: yup.string().required("Campo Obrigatório")   
+        course_module: yup.string().required("Campo Obrigatório"),
     })
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -39,19 +39,17 @@ const Signup = ({authenticated}) => {
 
     
     const onSubmit = (data) => {
-        const { course_module, name, email, password, avatar_url } = data;
+        const { course_module, name, email, password } = data;
         const user = {
           course_module,
           name,
           email,
           password,
-          avatar_url,
           bio: " ",
           contact: " ",
         };
         api.post("users", user)
         .then((r) => {
-
             toast.success('Conta criada com sucesso')
             return history.push("/login")
         })
@@ -77,7 +75,6 @@ const Signup = ({authenticated}) => {
                     <Input  type="email" label="Email" placeholder="Digite aqui seu email" register = {register} name="email" error = {errors.email?.message} ></Input>
                     <Input  type="password" label="Senha" placeholder="Digite aqui sua senha" register = {register} name="password" error = {errors.password?.message}></Input>
                     <Input  type="password" label="Confirmação de Senha" placeholder="Digite novamente sua senha" register = {register} name="confirmPassword" error = {errors.confirmPassword?.message} ></Input>
-                    <Input  type="text" label="Url Foto Perfil" placeholder="Cole aqui sua url" register = {register} name="avatar_url"  ></Input>
                     <label >Selecionar Modulo</label>
                     <select name="course_module"  {...register("course_module")}>
                         <option value="Primeiro módulo (Introdução ao Frontend)">"Primeiro módulo"</option>
