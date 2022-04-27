@@ -8,7 +8,7 @@ export const Container = styled.div`
 
     main{
         background-color: #212529;
-        height: 89vh;
+        height: 90vh;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -21,7 +21,7 @@ export const Container = styled.div`
 
     header{
         display: flex;
-        width: 365px;
+        width: 367px;
         justify-content: space-between;
         margin: 15px;
 

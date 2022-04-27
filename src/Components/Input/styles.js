@@ -20,7 +20,7 @@ export const InputContainer = styled.div`
     border-radius: 10px;
     border: 2px solid var(--gray);
     color: var(--gray);
-    width: 90%;
+    width: 89%;
     display: flex;
     transition: 0.4s;
 
