@@ -1,6 +1,5 @@
 import { Container, Modal } from "./styles"
 
-import Input from "../Input"
 import Button from "../Button"
 
 import * as yup from 'yup';
@@ -12,13 +11,13 @@ import { toast } from "react-toastify";
 import api from "../../Services/api"
 
 
-const ModalAdd = ({ setModalOpen}) => {
+const ModalEdit = ({ setModalEdit, tecId}) => {
+
 
     const token = JSON.parse(localStorage.getItem("@kenzieHub:token"));
 
     const schema = yup.object().shape({
 
-        title: yup.string().required("Campo Obrigatório"),
         status: yup.string().required("Campo Obrigatório")
     })
 
@@ -27,8 +26,10 @@ const ModalAdd = ({ setModalOpen}) => {
     });
 
     const onSubmit = (data) => {
+
+        console.log(data)
         
-        api.post("users/techs", data,{
+        api.put(`users/techs/${tecId}`, data,{
             
             headers: {
               Authorization: `Bearer ${token}`,
@@ -36,11 +37,11 @@ const ModalAdd = ({ setModalOpen}) => {
               
         })
         .then((response) => {
-            setModalOpen(false)
-            return toast.success("Tecnologia Adicionada");
+            setModalEdit(false)
+            return toast.success("Status Alterado");
         })
         .catch((error) => {
-            return toast.error("Cada tecnologia só pode ser adicionada 1 vez");
+            return toast.error("Verifique-se de estar alterando apenas o status ");
         })
     }
 
@@ -49,12 +50,11 @@ const ModalAdd = ({ setModalOpen}) => {
         <Container>
             <Modal>
             <header>
-                    <h3>Cadastrar Tecnologia</h3>
-                    <button onClick={() => setModalOpen(false)}>X</button>
+                    <h3>Alterando Status </h3>
+                    <button onClick={() => setModalEdit(false)}>X</button>
                 </header>
                 <main>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Input type="text" label="Nome" placeholder="Digite aqui a Tecnologia" register={register} name="title" error={errors.title?.message}></Input>
                         <label >Selecionar Status</label>
                         <select name="status"  {...register("status")}>
                             <option value="Iniciante">Iniciante</option>
@@ -62,6 +62,7 @@ const ModalAdd = ({ setModalOpen}) => {
                             <option value="Avançado">Avançado</option>
                         </select>
                         <Button type="submit">Salvar</Button>
+                        {errors.status && <span>{errors.name.message}</span>}
                     </form>
                 </main>
             </Modal>
@@ -70,4 +71,4 @@ const ModalAdd = ({ setModalOpen}) => {
 
 }
 
-export default ModalAdd;
+export default ModalEdit;
