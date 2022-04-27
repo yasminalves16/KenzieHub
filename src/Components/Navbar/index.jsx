@@ -6,19 +6,22 @@ import { useHistory } from "react-router-dom";
 
 import Button from "../Button"
 
-const Navbar = () => {
+const Navbar = ({setAuthenticated}) => {
 
     const history = useHistory();
+
+    const logOut = () => {
+        localStorage.clear()
+        setAuthenticated(false)
+        history.push("/");
+    }
 
     return (
         <Container>
                 <img alt="Logo KenzieHub" src={Logo}></img>
                 <Button
                     whiteSchema
-                    onClick={() => {
-                        history.push("/");
-                        localStorage.clear();
-                    }}
+                    onClick={() => logOut()}
                 >Sair</Button>
         </Container>
     )

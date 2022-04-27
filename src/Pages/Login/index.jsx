@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 import { Container } from "./styles";
 
@@ -17,7 +17,7 @@ import { toast } from "react-toastify"
 
 
 
-const Login = () => {
+const Login = ({authenticated, setAuthenticated}) => {
 
     const history = useHistory();
 
@@ -42,6 +42,8 @@ const Login = () => {
 
             toast.success("Login realizado com sucesso!")
 
+            setAuthenticated(true)
+
             return history.push("/dashboard");
         })
         .catch((err) => {
@@ -51,6 +53,10 @@ const Login = () => {
 
     const handleClick = () => {
         return history.push("/signup")
+    }
+
+    if(authenticated){
+        return <Redirect to="/dashboard" />
     }
 
     return (

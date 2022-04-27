@@ -2,7 +2,11 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useHistory} from "react-router-dom"
+import { useHistory, Redirect} from "react-router-dom"
+
+import { toast } from "react-toastify"
+
+import api from"../../Services/api"
 
 import { Container } from "./styles";
 
@@ -11,15 +15,9 @@ import Button from "../../Components/Button"
 
 import Logo from "../../Assets/Logo.svg";
 
-import { toast } from "react-toastify"
-
-import api from"../../Services/api"
 
 
-
-
-
-const Signup = () => {
+const Signup = ({authenticated}) => {
 
     const history = useHistory()
 
@@ -58,6 +56,10 @@ const Signup = () => {
             return history.push("/login")
         })
         .catch((err) => toast.error('Verifique se colocou todas as informações corretamente ou tente outro email') )
+    }
+
+    if(authenticated){
+        return <Redirect to="/dashboard" />
     }
 
     return (
