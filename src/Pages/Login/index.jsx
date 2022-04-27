@@ -36,7 +36,9 @@ const Login = ({authenticated, setAuthenticated}) => {
     const onSubmit = (data) => {
         api.post("sessions", data).then((response) => {
 
-            const { token } = response.data;
+            const { token, user } = response.data;
+
+            localStorage.setItem("@kenzieHub:user", JSON.stringify(user));
 
             localStorage.setItem("@kenzieHub:token", JSON.stringify(token));
 
