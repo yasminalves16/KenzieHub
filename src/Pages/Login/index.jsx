@@ -40,6 +40,8 @@ const Login = () => {
 
             localStorage.setItem("@kenzieHub:token", JSON.stringify(token));
 
+            toast.success("Login realizado com sucesso!")
+
             return history.push("/dashboard");
         })
         .catch((err) => {

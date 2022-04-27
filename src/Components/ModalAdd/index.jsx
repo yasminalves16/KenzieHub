@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import api from "../../Services/api"
 
 
-const ModalAdd = ({ setModalOpenClose }) => {
+const ModalAdd = ({ setModalOpenClose, setTecnologias, tecnologias }) => {
 
 
     const schema = yup.object().shape({
@@ -25,12 +25,14 @@ const ModalAdd = ({ setModalOpenClose }) => {
 
     const onSubmit = (data) => {
         console.log(data)
+        setTecnologias([...tecnologias, data ])
+        console.log(tecnologias)
     }
 
     return (
         <Container>
             <Modal>
-                <header>
+            <header>
                     <h3>Cadastrar Tecnologia</h3>
                     <button onClick={() => setModalOpenClose(false)}>X</button>
                 </header>

@@ -1,52 +1,54 @@
 import { Container } from "./styles";
-import Logo from "../../Assets/Logo.svg"
 
-import Button from "../../Components/Button"
+import Button from "../../Components/Button";
+import Navbar from "../../Components/Navbar"
+import ModalAdd from "../../Components/ModalAdd";
+import Card from "../../Components/Card"
 
-import { useHistory } from "react-router-dom"
+import { useState } from "react";
 
-import { useState } from "react"
-
-
-
-import ModalAdd from "../../Components/ModalAdd"
 
 const Dashboard = () => {
+    const [tecnologias, setTecnologias] = useState([]);
 
-    const [modalOpenClose, setModalOpenClose] = useState(false)
+    const [modalOpenClose, setModalOpenClose] = useState(false);
 
-    const history = useHistory()
 
     return (
+        <Container>
+            <Navbar />
 
-        <Container >
-            <header>
-                <img alt="Logo KenzieHub" src={Logo}></img>
-                <Button onClick={() => {
-                    history.push("/"); localStorage.clear();
-                }}> Sair </Button>
-            </header>
-            <section>
-                <h2>Ola dev</h2>
+            <hr></hr>
+
+            <header className="header">
+                <h2>Olá, dev</h2>
                 <p>Imagem</p>
                 <p>Modulo</p>
-            </section>
+            </header>
+            <hr></hr>
+
+
+
             <main>
-                <div>
+                <div className="topo">
                     <h2>Tecnologias</h2>
-                    <Button onClick={() => setModalOpenClose(true)}>+</Button>     
+                    <Button whiteSchema onClick={() => setModalOpenClose(true)}>
+                        +
+                    </Button>
                 </div>
-                <>
-                {modalOpenClose && <ModalAdd setModalOpenClose = {setModalOpenClose}/>}
-                </>
-                <section>
-                    quadro
-                  
+                <section className="vitrine">
+                    {tecnologias.length === 0 ? (
+                        <div className="noCard">
+                            <h2>Você ainda não possui tecnologias</h2>
+                        </div>
+                    ) : (
+                        <Card tecnologias = {tecnologias}/>
+                    )}
                 </section>
-                
             </main>
+            {modalOpenClose && <ModalAdd tecnologias={tecnologias} setTecnologias={setTecnologias} setModalOpenClose={setModalOpenClose} />}
         </Container>
     );
-}
+};
 
-export default Dashboard
+export default Dashboard;
