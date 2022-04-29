@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Navigate, Redirect } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
@@ -32,7 +32,7 @@ const Routes = () => {
                 <Login authenticated ={authenticated} setAuthenticated = {setAuthenticated}/>
             </Route>
             <Route exact path="/dashboard">
-                <Dashboard authenticated ={authenticated} setAuthenticated = {setAuthenticated}/>
+                {authenticated ? <Dashboard setAuthenticated = {setAuthenticated}/> : <Redirect to="/"/>}
             </Route>
         </Switch>
     );

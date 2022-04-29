@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { Redirect } from "react-router-dom";
-
 import { Container } from "./styles";
 
 import Button from "../../Components/Button";
@@ -12,7 +10,7 @@ import Card from "../../Components/Card"
 
 import api from "../../Services/api"
 
-const Dashboard = ({ authenticated, setAuthenticated }) => {
+const Dashboard = ({  setAuthenticated }) => {
     
     
     const [modalOpen, setModalOpen] = useState(false);
@@ -39,11 +37,7 @@ const Dashboard = ({ authenticated, setAuthenticated }) => {
         
         .catch((err) => console.log(err));
     });
-    
-    
-    if (!authenticated) {
-        return <Redirect to="/login" />;
-    }
+
     
     return (
         <Container>
