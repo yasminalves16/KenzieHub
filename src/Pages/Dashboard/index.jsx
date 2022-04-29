@@ -13,40 +13,38 @@ import Card from "../../Components/Card"
 import api from "../../Services/api"
 
 const Dashboard = ({ authenticated, setAuthenticated }) => {
-
-
+    
+    
     const [modalOpen, setModalOpen] = useState(false);
-
+    
     const [modalEdit, setModalEdit] = useState(false)
-
+    
     const [tecId, setTecId] = useState("")
-
+    
     const [tecnologias, setTecnologias] = useState([])
     
     const user = JSON.parse(localStorage.getItem("@kenzieHub:user"));
-
+    
     const token = JSON.parse(localStorage.getItem("@kenzieHub:token"));
-
-
     
     const { name, course_module, id } = user
-
-
+    
+    
     useEffect(() => {
         api
-            .get(`users/${id}`)
-            .then((response) => {
-                setTecnologias(response.data.techs);
-            })
-
-            .catch((err) => console.log(err));
+        .get(`users/${id}`)
+        .then((response) => {
+            setTecnologias(response.data.techs);
+        })
+        
+        .catch((err) => console.log(err));
     });
-
-
+    
+    
     if (!authenticated) {
-        return <Redirect to="/" />
+        return <Redirect to="/login" />;
     }
-
+    
     return (
         <Container>
 

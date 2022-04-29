@@ -54,7 +54,7 @@ const ModalAdd = ({ setModalOpen}) => {
                 </header>
                 <main>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Input type="text" label="Nome" placeholder="Digite aqui a Tecnologia" register={register} name="title" error={errors.title?.message}></Input>
+                        <Input maxlength="50" type="text" label="Nome" placeholder="Digite aqui a Tecnologia" register={register} name="title" error={errors.title?.message}></Input>
                         <label >Selecionar Status</label>
                         <select name="status"  {...register("status")}>
                             <option value="Iniciante">Iniciante</option>

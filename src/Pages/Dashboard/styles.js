@@ -49,7 +49,8 @@ export const Container = styled.div`
             background-color:  #212529;
 
             div{
-                margin: 30px 30px 30px 30px;
+                margin: 30px 30px 18px 30px;
+                padding-bottom: 10px;
             }
 
             h2{
